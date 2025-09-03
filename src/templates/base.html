@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Sistema de Gestión de Eventos{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <nav>
+        <a href="{{ url_for('index') }}">Inicio</a>
+        <a href="{{ url_for('create_event') }}">Crear Evento</a>
+        <a href="{{ url_for('events_by_category', category='Tecnología') }}">Tecnología</a>
+        <a href="{{ url_for('events_by_category', category='Académico') }}">Académico</a>
+        <a href="{{ url_for('events_by_category', category='Cultural') }}">Cultural</a>
+        <a href="{{ url_for('events_by_category', category='Deportivo') }}">Deportivo</a>
+        <a href="{{ url_for('events_by_category', category='Social') }}">Social</a>
+    </nav>
+    <div class="content">
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                <ul class="flashes">
+                    {% for category, message in messages %}
+                        <li class="{{ category }}">{{ message }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        {% endwith %}
+        {% block content %}{% endblock %}
+    </div>
+</body>
+</html>

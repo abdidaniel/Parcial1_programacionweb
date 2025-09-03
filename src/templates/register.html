@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Registro para el evento: {{ event.title }}</h1>
+<p>{{ event.description }}</p>
+<p>Fecha: {{ event.date }} a las {{ event.time }}</p>
+<p>Ubicación: {{ event.location }}</p>
+<p>Cupos disponibles: {{ event.max_attendees - event.attendees|length }}</p>
+
+<form method="POST">
+    {{ form.hidden_tag() }}
+    <div>
+        {{ form.name.label }}<br>
+        {{ form.name() }}
+    </div>
+    <div>
+        {{ form.email.label }}<br>
+        {{ form.email() }}
+    </div>
+    <button type="submit">Registrarse</button>
+</form>
+{% endblock %}
+

@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block title %}Eventos Próximos{% endblock %}
+
+{% block content %}
+
+<h1>Eventos Próximos</h1>
+<div class="container">
+    {% for event in events %}
+        <div class="event">
+            <h2><a href="{{ url_for('event_detail', slug=event.slug) }}">{{ event.title }}</a></h2>
+            <p>{{ event.date }} a las {{ event.time }}</p>
+            <p>{{ event.location }}</p>
+            <p>Categoría: {{ event.category }}</p>
+            <p>Cupos disponibles: {{ event.max_attendees - event.attendees|length }}</p>
+            {% if event.featured %}
+                <p><strong>Destacado</strong></p>
+            {% endif %}
+        </div>
+    {% endfor %}
+</div>
+{% endblock %}

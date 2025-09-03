@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block title %}Eventos en la categoría: {{ category }}{% endblock %}
+
+{% block content %}
+<h1>Eventos en la categoría: {{ category }}</h1>
+
+{% if events %}
+    <div class="container">
+        {% for event in events %}
+            <div class="event">
+                <h2><a href="{{ url_for('event_detail', slug=event.slug) }}">{{ event.title }}</a></h2>
+                <p>{{ event.date }} a las {{ event.time }}</p>
+                <p>{{ event.location }}</p>
+                <p>Cupos disponibles: {{ event.max_attendees - event.attendees|length }}</p>
+                {% if event.featured %}
+                    <p><strong>Destacado</strong></p>
+                {% endif %}
+            </div>
+        {% endfor %}
+    </div>
+{% else %}
+    <p>No hay eventos en esta categoría.</p>
+{% endif %}
+
+{% endblock %}
