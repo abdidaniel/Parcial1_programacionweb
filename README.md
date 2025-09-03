@@ -1,4 +1,9 @@
 <h1>Sistema de Gestión de Eventos</h1>
+<p>Desarrollado por:</p>
+<ul>
+    <li>Miguel Montoya</li>
+    <li>Abdi Daniel Escobar</li>
+</ul>
 <p>Este es un sistema de gestión de eventos sencillo creado con las herramientas Flask, utilizando tecnologías como Flask-WTF para la gestión de formularios, Jinja2 para el sistema de plantillas, y almacenamiento de datos en memoria.</p>
     
 <h2>Características</h2>
